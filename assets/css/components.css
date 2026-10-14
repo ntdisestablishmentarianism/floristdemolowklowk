@@ -506,6 +506,53 @@ body.drawer-open {
   transform: translate(-50%, 0);
 }
 
+/* ---------- Floating WhatsApp button ---------- */
+
+/* Sits below the drawer scrim (z 50) so it cannot be tapped while the basket
+   is open. Sharp 3px corners to match the buttons, not a generic round FAB. */
+.whatsapp-fab {
+  position: fixed;
+  right: var(--space-5);
+  bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.62rem 1rem 0.62rem 0.9rem;
+  background: var(--leaf);
+  color: var(--cotton);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--step--1);
+  text-decoration: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  transition: background-color 0.16s ease, transform 0.16s ease;
+}
+
+.whatsapp-fab:hover {
+  background: var(--leaf-deep);
+  color: var(--cotton);
+  transform: translateY(-2px);
+}
+
+.whatsapp-fab__glyph {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: none;
+}
+
+/* On phones the label drops and it becomes a square icon button. */
+@media (max-width: 34rem) {
+  .whatsapp-fab {
+    padding: 0.7rem;
+  }
+
+  .whatsapp-fab__label {
+    display: none;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {

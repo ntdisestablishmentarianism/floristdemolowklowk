@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { headerHTML, footerHTML, cartDrawerHTML } from '../assets/js/components.js'
+import { headerHTML, footerHTML, cartDrawerHTML, whatsAppButtonHTML } from '../assets/js/components.js'
 import { config } from '../assets/js/site.config.js'
 
 const PAGES = ['/', '/shop.html', '/occasions.html', '/about.html', '/order.html']
@@ -46,4 +46,14 @@ test('a drawer with lines lists the item, quantity and line total', () => {
   assert.ok(html.includes('Xewali Dawn'))
   assert.ok(html.includes('₹1,298'))
   assert.ok(html.includes('order.html'))
+})
+
+test('the floating WhatsApp button opens a blank chat to the shop number', () => {
+  const html = whatsAppButtonHTML(config)
+  assert.ok(html.includes('href="https://wa.me/919954193440"'))
+  assert.equal(html.includes('?text='), false, 'the chat must open blank')
+  assert.ok(html.includes('aria-label="Chat on WhatsApp"'))
+  assert.ok(html.includes('target="_blank"'))
+  assert.match(html, /rel="[^"]*noopener/)
+  assert.match(html, /<svg[^>]*aria-hidden="true"/)
 })
