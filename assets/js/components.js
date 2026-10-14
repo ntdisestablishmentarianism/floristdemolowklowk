@@ -194,6 +194,11 @@ export function mountLayout(config, { activePath = '/' } = {}) {
     if (!target) return
     if (target.matches('[data-cart-open]')) return openDrawer()
     if (target.matches('[data-cart-close]')) return closeDrawer()
+    if (target.matches('[data-add]')) {
+      cart.add(target.dataset.add, 1)
+      toast(`${target.dataset.name || 'Item'} added to your basket`)
+      return
+    }
     const line = target.closest('[data-id]')
     if (!line) return
     const id = line.dataset.id

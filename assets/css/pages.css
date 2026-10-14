@@ -1,0 +1,289 @@
+/* Kopou — page-level composition: hero, sections, steps, bands. */
+
+/* ---------- Shared page header for inner pages ---------- */
+
+.page-head {
+  padding-block: var(--space-7) var(--space-5);
+}
+
+.page-head h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: var(--space-3);
+}
+
+.page-head .lede {
+  max-width: 52ch;
+}
+
+/* ---------- Hero: the one bold move — a woven gamusa band ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: min(80vh, 46rem);
+  background: var(--indigo);
+  overflow: hidden;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(21, 40, 57, 0.4) 0%,
+    rgba(21, 40, 57, 0.08) 38%,
+    rgba(21, 40, 57, 0.28) 100%
+  );
+}
+
+.hero__band {
+  position: relative;
+  background-color: var(--gamusa);
+  background-image: var(--weave-vertical);
+  color: var(--cotton);
+  animation: weave-in 0.72s cubic-bezier(0.22, 0.7, 0.2, 1) both;
+}
+
+@keyframes weave-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__band-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+}
+
+.hero__title {
+  font-size: clamp(1.9rem, 4.6vw, 3.3rem);
+  color: var(--cotton);
+  margin: 0;
+  max-width: 22ch;
+  animation: rise 0.55s 0.28s ease both;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  animation: rise 0.55s 0.44s ease both;
+}
+
+/* Buttons reversed on the red band. */
+.hero .btn--primary {
+  background: var(--cotton);
+  color: var(--indigo);
+}
+
+.hero .btn--primary:hover {
+  background: #ffffff;
+  color: var(--indigo);
+}
+
+.hero .btn--ghost {
+  border-color: var(--cotton);
+  color: var(--cotton);
+}
+
+.hero .btn--ghost:hover {
+  background: rgba(245, 239, 226, 0.16);
+  color: var(--cotton);
+}
+
+/* ---------- Sections ---------- */
+
+.section {
+  padding-block: var(--space-8);
+}
+
+.section--tight {
+  padding-block: var(--space-7);
+}
+
+.section--cloth {
+  background: var(--cotton-deep);
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.section__head h2 {
+  margin: 0;
+}
+
+.section__more {
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+/* ---------- Grids ---------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-6) var(--space-5);
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ---------- How ordering works: a real sequence, so numerals ---------- */
+
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.step {
+  position: relative;
+  padding-top: var(--space-4);
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-image: var(--weave);
+}
+
+.step__num {
+  display: block;
+  font-family: var(--font-assamese);
+  font-size: var(--step-4);
+  line-height: 1;
+  color: var(--gamusa);
+}
+
+.step h3 {
+  font-size: var(--step-1);
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.step p {
+  margin: 0;
+  color: var(--indigo-soft);
+}
+
+.steps__note {
+  margin-top: var(--space-5);
+  color: var(--indigo-soft);
+  max-width: var(--measure);
+}
+
+/* ---------- About band ---------- */
+
+.about-band {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.about-band__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.about-band__body p {
+  max-width: 46ch;
+}
+
+/* ---------- Delivery note ---------- */
+
+.delivery-note {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5);
+  border: 1px solid rgba(21, 40, 57, 0.18);
+  border-radius: var(--radius);
+  background: var(--cloth);
+}
+
+.delivery-note__mark {
+  font-family: var(--font-assamese);
+  font-size: var(--step-3);
+  line-height: 1;
+  color: var(--marigold);
+}
+
+.delivery-note p {
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 60rem) {
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 48rem) {
+  .about-band {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 34rem) {
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+}

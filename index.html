@@ -17,20 +17,117 @@
     <link rel="stylesheet" href="/assets/css/tokens.css" />
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
   </head>
   <body>
-    <main id="main" class="container container--narrow">
-      <h1>Kopou</h1>
-      <p class="lede">
-        Shell placeholder. The header, footer and basket are mounted here; the
-        home page content is built in the next task.
-      </p>
+    <main id="main">
+      <section class="hero">
+        <img
+          class="hero__img"
+          src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1600&q=70"
+          alt="A hand-tied bouquet of the morning's flowers"
+          width="1600"
+          height="1067"
+        />
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__band">
+          <div class="container hero__band-inner">
+            <h1 class="hero__title">Flowers cut this morning, tied by hand in Dibrugarh.</h1>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="/order.html">Order a bouquet</a>
+              <a class="btn btn--ghost" href="/shop.html">Browse the shop</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="featured-heading">
+        <div class="section__head">
+          <h2 id="featured-heading">This week at the shop</h2>
+          <a class="section__more" href="/shop.html">See all flowers</a>
+        </div>
+        <div class="grid grid--3" data-featured></div>
+      </section>
+
+      <section class="section section--cloth" aria-labelledby="occasions-heading">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="occasions-heading">Shop by occasion</h2>
+            <a class="section__more" href="/occasions.html">All occasions</a>
+          </div>
+          <div class="chip-row" data-occasions></div>
+        </div>
+      </section>
+
+      <section class="section container" aria-labelledby="steps-heading">
+        <div class="section__head">
+          <h2 id="steps-heading">How ordering works</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" lang="as" aria-hidden="true">১</span>
+            <h3>Choose your flowers</h3>
+            <p>
+              Browse <span data-product-count>the</span> arrangements, add what you like to the
+              basket, and tell us the occasion.
+            </p>
+          </li>
+          <li class="step">
+            <span class="step__num" lang="as" aria-hidden="true">২</span>
+            <h3>Send your order</h3>
+            <p>
+              Fill in the delivery details. Your order reaches the shop straight away, with the
+              card message if you wrote one.
+            </p>
+          </li>
+          <li class="step">
+            <span class="step__num" lang="as" aria-hidden="true">৩</span>
+            <h3>Pay on delivery</h3>
+            <p>
+              Cash or UPI when the flowers arrive. Nothing is charged online.
+            </p>
+          </li>
+        </ol>
+        <p class="steps__note">
+          We confirm every order personally on WhatsApp before it goes out — we check the day's
+          flowers and agree the address and time with you.
+        </p>
+      </section>
+
+      <section class="section section--tight container" aria-labelledby="about-heading">
+        <div class="about-band">
+          <div class="about-band__media">
+            <img
+              src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&w=1000&q=70"
+              alt="Hands tying a bouquet in kraft paper at the workroom bench"
+              loading="lazy"
+              width="1000"
+              height="750"
+            />
+          </div>
+          <div class="about-band__body">
+            <h2 id="about-heading">A family shop, a few streets from the ghat</h2>
+            <p>
+              We buy flowers early, keep them cool, and tie every bouquet to order — no two come
+              out quite the same. Marigold strings for Bihu, lilies for the harder days, and
+              whatever looked best that morning for everything else.
+            </p>
+            <a class="section__more" href="/about.html">More about Kopou</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--tight container">
+        <div class="delivery-note">
+          <span class="delivery-note__mark" lang="as" aria-hidden="true">✦</span>
+          <p>
+            We deliver across Dibrugarh city, and delivery is free on orders from ₹499. Ordered
+            before 4:00 PM, it goes out the same day — otherwise first thing next morning.
+          </p>
+        </div>
+      </section>
     </main>
 
-    <script type="module">
-      import { mountLayout } from '/assets/js/components.js'
-      import { config } from '/assets/js/site.config.js'
-      mountLayout(config, { activePath: '/' })
-    </script>
+    <script type="module" src="/assets/js/pages/home.js"></script>
   </body>
 </html>
