@@ -147,7 +147,7 @@ export function mountLayout(config, { activePath = '/' } = {}) {
 
   function renderDrawer() {
     const lines = cart.detailed()
-    const totals = computeTotals({ items: cart.items() })
+    const totals = computeTotals({ items: cart.pricedItems() })
     host.innerHTML = cartDrawerHTML(lines, totals)
     const badge = document.querySelector('[data-cart-count]')
     if (badge) badge.textContent = String(cart.count())

@@ -520,4 +520,8 @@
   .grid--4 {
     grid-template-columns: 1fr;
   }
+
+  .checkout__pair {
+    grid-template-columns: 1fr;
+  }
 }

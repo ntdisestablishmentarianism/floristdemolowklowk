@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Kopou">
+  <rect width="32" height="32" rx="7" fill="#F5EFE2" />
+  <path d="M16 28 C16 21 16 15 16 9.5" stroke="#3F5C43" stroke-width="1.7" fill="none" stroke-linecap="round" />
+  <g fill="#C2262C">
+    <ellipse cx="16" cy="7" rx="2.7" ry="3.6" />
+    <ellipse cx="11.2" cy="12.2" rx="2.3" ry="3.1" />
+    <ellipse cx="20.8" cy="12.2" rx="2.3" ry="3.1" />
+  </g>
+  <g fill="#E9A22B">
+    <circle cx="16" cy="7" r="1" />
+    <circle cx="11.2" cy="12.2" r="0.85" />
+    <circle cx="20.8" cy="12.2" r="0.85" />
+  </g>
+</svg>

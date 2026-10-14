@@ -67,7 +67,7 @@ export function bootstrap() {
   let couponCode = readCoupon()
   couponInput.value = couponCode
 
-  const totalsNow = () => computeTotals({ items: cart.items(), couponCode })
+  const totalsNow = () => computeTotals({ items: cart.pricedItems(), couponCode })
 
   function render() {
     const lines = cart.detailed()
