@@ -1,0 +1,71 @@
+/* ------------------------------------------------------------------
+   Kopou — design tokens
+   Direction: "Gamusa" — the red-and-white Assamese handwoven cloth,
+   and the marigold of every Bihu. Cotton ground, indigo ink, one sharp
+   red accent. Eczar for display, Hind Siliguri for body.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Palette */
+  --cotton: #f5efe2;
+  --cotton-deep: #ebe2d0;
+  --cloth: #fbf7ee; /* lifted surface, e.g. cards on cotton */
+  --indigo: #152839;
+  --indigo-soft: #405568;
+  --gamusa: #c2262c;
+  --gamusa-deep: #9e1c22;
+  --marigold: #e9a22b;
+  --leaf: #3f5c43;
+
+  --ink: var(--indigo);
+  --paper: var(--cotton);
+
+  /* Woven thread rule — the one structural device. */
+  --weave: repeating-linear-gradient(
+    90deg,
+    var(--gamusa) 0 3px,
+    transparent 3px 9px
+  );
+  --weave-vertical: repeating-linear-gradient(
+    0deg,
+    rgba(194, 38, 44, 0.14) 0 2px,
+    transparent 2px 8px
+  );
+
+  /* Type */
+  --font-display: 'Eczar', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Hind Siliguri', 'Segoe UI', system-ui, sans-serif;
+  --font-assamese: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5rem;
+  --step-3: 1.9rem;
+  --step-4: 2.4rem;
+  --step-5: clamp(2.6rem, 6.5vw, 4.6rem);
+
+  --leading-tight: 1.04;
+  --leading-body: 1.62;
+
+  --measure: 66ch;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.25rem;
+  --space-7: 3.5rem;
+  --space-8: 5rem;
+  --space-9: 7rem;
+
+  --radius: 3px;
+  --container: 74rem;
+
+  --shadow-soft: 0 18px 40px -28px rgba(21, 40, 57, 0.5);
+
+  --focus: 2px solid var(--marigold);
+  --focus-offset: 3px;
+}
