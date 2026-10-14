@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The flower shelf — Kopou, Dibrugarh</title>
+    <meta
+      name="description"
+      content="Browse every arrangement at Kopou: bouquets, marigold strings and potted plants, with prices in rupees. Add to the basket and pay on delivery."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/css/tokens.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+  <body>
+    <main id="main" class="container">
+      <header class="page-head">
+        <h1>The flower shelf</h1>
+        <p class="lede">
+          Everything we tie, in one place. Add what you like to the basket — you settle up on
+          delivery, once we've confirmed the order with you.
+        </p>
+      </header>
+
+      <form class="filters" data-filters aria-label="Filter the flower shelf">
+        <div class="filters__row">
+          <div class="field">
+            <label for="f-occ">Occasion</label>
+            <select id="f-occ" name="occasion"></select>
+          </div>
+          <div class="field">
+            <label for="f-cat">Type</label>
+            <select id="f-cat" name="category"></select>
+          </div>
+          <div class="field">
+            <label for="f-min">Lowest price (₹)</label>
+            <input id="f-min" name="minPrice" type="number" min="0" step="50" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="f-max">Highest price (₹)</label>
+            <input id="f-max" name="maxPrice" type="number" min="0" step="50" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="f-sort">Sort</label>
+            <select id="f-sort" name="sort">
+              <option value="">Our order</option>
+              <option value="featured">Featured first</option>
+              <option value="price-asc">Price, low to high</option>
+              <option value="price-desc">Price, high to low</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn--ghost btn--small" data-clear>Clear</button>
+        </div>
+        <p class="filters__count" data-result-count aria-live="polite"></p>
+      </form>
+
+      <div class="grid grid--3" data-results></div>
+    </main>
+
+    <script type="module" src="/assets/js/pages/shop.js"></script>
+  </body>
+</html>
