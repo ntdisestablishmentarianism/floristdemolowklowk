@@ -365,6 +365,126 @@
   gap: var(--space-3);
 }
 
+/* ---------- Checkout ---------- */
+
+.checkout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.checkout__heading {
+  font-size: var(--step-2);
+  margin-bottom: var(--space-4);
+}
+
+.checkout__form {
+  min-width: 0;
+}
+
+.checkout__pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.checkout__summary {
+  position: sticky;
+  top: 6rem;
+  background: var(--cloth);
+  border: 1px solid rgba(21, 40, 57, 0.16);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+
+.checkout__lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(21, 40, 57, 0.16);
+}
+
+.sumline {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.sumline__name {
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.sumline__qty {
+  color: var(--indigo-soft);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+}
+
+.sumline__price {
+  font-variant-numeric: tabular-nums;
+}
+
+.checkout__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.checkout__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.checkout__row--total {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(21, 40, 57, 0.2);
+}
+
+.checkout__empty {
+  color: var(--indigo-soft);
+}
+
+.coupon {
+  display: flex;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.coupon input {
+  flex: 1;
+}
+
+.checkout__form-error {
+  color: var(--gamusa-deep);
+  font-weight: 600;
+  min-height: 1.2em;
+  margin: 0 0 var(--space-3);
+}
+
+.checkout__promise {
+  text-align: center;
+  margin-top: var(--space-3);
+}
+
+.checkout__done {
+  max-width: 44rem;
+  padding-block: var(--space-6);
+}
+
+.checkout__done h2 {
+  font-size: var(--step-4);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 60rem) {
@@ -376,6 +496,14 @@
   .steps {
     grid-template-columns: 1fr;
     gap: var(--space-5);
+  }
+
+  .checkout {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout__summary {
+    position: static;
   }
 }
 

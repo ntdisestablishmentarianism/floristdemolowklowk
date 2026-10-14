@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Send your order — Kopou, Dibrugarh</title>
+    <meta
+      name="description"
+      content="Send your flower order to Kopou in Dibrugarh. Tell us the details and we'll confirm on WhatsApp. Pay cash or UPI on delivery."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/css/tokens.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+  <body>
+    <main id="main" class="container">
+      <header class="page-head">
+        <h1>Send your order</h1>
+        <p class="lede">
+          Tell us where it is going and when. Your order reaches the shop straight away, and we
+          confirm it with you on WhatsApp before it goes out. Nothing is charged here.
+        </p>
+      </header>
+
+      <section class="checkout__done" data-done hidden aria-live="polite">
+        <h2>Order sent. Thank you.</h2>
+        <p>
+          Your reference is <strong data-done-reference></strong>. We'll check today's flowers and
+          message you on WhatsApp to confirm the address and the time.
+        </p>
+        <p>
+          <a class="btn btn--primary" data-done-wa href="#" rel="noopener">Message us on WhatsApp</a>
+        </p>
+        <p class="field-hint">Keep the reference handy — it is how we will find your order.</p>
+      </section>
+
+      <div class="checkout" data-checkout>
+        <form class="checkout__form" data-order-form novalidate>
+          <h2 class="checkout__heading">Your details</h2>
+
+          <div class="field">
+            <label for="o-name">Full name</label>
+            <input id="o-name" name="name" autocomplete="name" required />
+            <span class="field__error" data-error-for="name"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-phone">Phone number (WhatsApp)</label>
+            <input id="o-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+            <span class="field__error" data-error-for="phone"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-alt">Alternate phone <span class="field-hint">(optional)</span></label>
+            <input id="o-alt" name="altPhone" type="tel" inputmode="tel" />
+            <span class="field__error" data-error-for="altPhone"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-address">Delivery address</label>
+            <input id="o-address" name="address" autocomplete="street-address" required />
+            <span class="field__error" data-error-for="address"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-landmark">Landmark <span class="field-hint">(optional, but it helps)</span></label>
+            <input id="o-landmark" name="landmark" />
+            <span class="field__error" data-error-for="landmark"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-pincode">Pincode</label>
+            <input id="o-pincode" name="pincode" inputmode="numeric" autocomplete="postal-code" />
+            <span class="field__error" data-error-for="pincode"></span>
+          </div>
+
+          <div class="checkout__pair">
+            <div class="field">
+              <label for="o-date">Preferred delivery date</label>
+              <input id="o-date" name="date" type="date" />
+              <span class="field__error" data-error-for="date"></span>
+            </div>
+            <div class="field">
+              <label for="o-slot">Preferred time</label>
+              <select id="o-slot" name="slot">
+                <option value="Morning (8am – 12pm)">Morning (8am – 12pm)</option>
+                <option value="Afternoon (12pm – 4pm)">Afternoon (12pm – 4pm)</option>
+                <option value="Evening (4pm – 8pm)">Evening (4pm – 8pm)</option>
+                <option value="As early as possible">As early as possible</option>
+              </select>
+              <span class="field__error" data-error-for="slot"></span>
+            </div>
+          </div>
+
+          <h2 class="checkout__heading">The flowers</h2>
+
+          <div class="field">
+            <label for="o-recipient">Who is it for? <span class="field-hint">(if not you)</span></label>
+            <input id="o-recipient" name="recipient" />
+            <span class="field__error" data-error-for="recipient"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-occasion">Occasion <span class="field-hint">(optional)</span></label>
+            <select id="o-occasion" name="occasion">
+              <option value="">Not sure / just because</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Love &amp; Romance</option>
+              <option>Congratulations</option>
+              <option>Thank You</option>
+              <option>Get Well</option>
+              <option>Sympathy</option>
+              <option>Festive (Bihu)</option>
+            </select>
+            <span class="field__error" data-error-for="occasion"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-card">Message for the card <span class="field-hint">(optional)</span></label>
+            <textarea id="o-card" name="cardMessage" placeholder="We'll write this on the card in our own hand."></textarea>
+            <span class="field__error" data-error-for="cardMessage"></span>
+          </div>
+
+          <fieldset class="field">
+            <legend>Payment on delivery</legend>
+            <div class="radio-row">
+              <label class="radio">
+                <input type="radio" name="payment" value="Cash on delivery" checked />
+                Cash on delivery
+              </label>
+              <label class="radio">
+                <input type="radio" name="payment" value="UPI on delivery" />
+                UPI on delivery
+              </label>
+            </div>
+            <span class="field__error" data-error-for="payment"></span>
+          </fieldset>
+
+          <div class="field">
+            <label for="o-notes">Anything else? <span class="field-hint">(optional)</span></label>
+            <textarea id="o-notes" name="notes"></textarea>
+            <span class="field__error" data-error-for="notes"></span>
+          </div>
+
+          <div class="field">
+            <label for="o-coupon">Coupon code <span class="field-hint">(optional)</span></label>
+            <div class="coupon">
+              <input id="o-coupon" name="coupon" autocomplete="off" placeholder="e.g. WELCOME10" />
+              <button type="button" class="btn btn--ghost btn--small" data-apply-coupon>Apply</button>
+            </div>
+            <span class="field__error" data-coupon-msg aria-live="polite"></span>
+          </div>
+
+          <p class="checkout__form-error" data-form-error role="alert"></p>
+
+          <button class="btn btn--primary btn--block" type="submit" data-submit>Send the order</button>
+          <p class="field-hint checkout__promise">
+            We send this to the shop, then confirm on WhatsApp. Nothing is charged online.
+          </p>
+        </form>
+
+        <aside class="checkout__summary" aria-label="Order summary">
+          <h2 class="checkout__heading">Your basket</h2>
+          <p class="checkout__empty" data-empty hidden>
+            Your basket is empty. <a href="/shop.html">Browse the flowers</a> and add something first.
+          </p>
+          <div class="checkout__lines" data-summary-lines></div>
+          <div class="checkout__rows" data-summary-rows aria-live="polite"></div>
+          <p class="field-hint">Pay cash or UPI when the flowers arrive.</p>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="/assets/js/pages/order.js"></script>
+  </body>
+</html>
