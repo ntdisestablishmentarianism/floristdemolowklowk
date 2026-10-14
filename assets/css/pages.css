@@ -299,6 +299,30 @@
   }
 }
 
+/* ---------- Occasions ---------- */
+
+.occasion {
+  padding-bottom: var(--space-7);
+}
+
+.occasion + .occasion {
+  padding-top: var(--space-6);
+}
+
+.occasion + .occasion::before {
+  content: '';
+  display: block;
+  height: 4px;
+  margin-bottom: var(--space-6);
+  background-image: var(--weave);
+}
+
+.occasion__copy {
+  max-width: var(--measure);
+  color: var(--indigo-soft);
+  margin-bottom: var(--space-5);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 60rem) {
