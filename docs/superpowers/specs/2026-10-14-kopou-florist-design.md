@@ -194,33 +194,55 @@ show a clear inline message.
 
 ## Brand & visual system
 
-**Direction:** "Atelier" — soft, modern, premium-but-warm.
+**Direction:** "Gamusa" — the red-and-white Assamese handwoven cloth, and the
+marigold of every Bihu. The identity is drawn from the shop's own material
+world (the *gamusa*, marigold, indigo, the woven thread) rather than from a
+design-trend palette. The earlier "Atelier" direction (ivory + dusty rose +
+Fraunces) was scrapped in review: it sits on the current default AI look —
+warm cream ground, high-contrast serif display, soft warm accent — and is
+indistinguishable from any generated page.
 
 **Palette (CSS variables):**
-- Ivory (page): `#F7F3EC`
-- Warm paper (cards/alt): `#EFE9DF`
-- Ink (text): `#302C29`
-- Taupe (secondary text/borders): `#6B5F52`
-- Dusty rose (accent): `#C79A93`
-- Muted plum (primary accent/CTA): `#6D4B5E`
+- Cotton (page): `#F5EFE2`
+- Cotton deep (cards / alt bands): `#EBE2D0`
+- Indigo (ink and structure): `#152839`
+- Gamusa red (the single attention colour): `#C2262C`
+- Gamusa red deep (pressed / hover): `#9E1C22`
+- Marigold (seasonal accent, used sparingly): `#E9A22B`
+- Leaf (foliage, minor): `#3F5C43`
+
+Dominant cotton + indigo, with gamusa red as one sharp accent. Not an even
+distribution.
 
 **Type:**
-- Display: **Fraunces** (soft serif) — wordmark, headlines.
-- Body / UI: **Instrument Sans** — everything else.
-- Both loaded from a web font source; system fallbacks defined.
+- Display, prices, wordmark: **Eczar** — a sturdy, high-contrast serif with
+  South Asian design provenance.
+- Body / UI: **Hind Siliguri** — a humanist face that also renders Assamese, so
+  the wordmark *কোপৌ* is native rather than transliterated.
+- Both from a web font source; system fallbacks defined.
 
-**Wordmark:** "KOPOU" set in Fraunces, optionally with a small orchid mark
-(kopou phool) as a favicon and header glyph.
+**Wordmark:** **কোপৌ** set in Hind Siliguri, with "KOPOU" in Eczar beneath or
+beside it, and the kopou phool (foxtail orchid) as a favicon glyph.
+
+**Structural device:** a **woven thread rule** — a fine repeating red hairline
+(`repeating-linear-gradient`) — marks block and section boundaries, consistently
+and nowhere decoratively. It is the one place boldness is spent; everything
+around it stays quiet. No card shadows; the weave is the only separator.
 
 **Photography:** free stock, **hotlinked** (Unsplash/Pexels URLs held in the
-data file). Bright natural light, cream/neutral backgrounds, soft shadows; a few
+data file), each chosen from a search whose subject matches the product. A few
 local-context shots (counter, hands tying a bouquet, foliage). One image per
 product, consistent crop ratio. Where no exact match for a named composition
 exists, use the closest credible free-stock image.
 
-**Motion:** CSS-first. One hero load sequence with staggered reveals
-(`animation-delay`); cart drawer slide; restrained hover lift on cards; respect
-`prefers-reduced-motion`.
+**Motion:** CSS-first, one orchestrated load only — the woven band *weaves in*
+once (a short horizontal reveal), then the headline and CTAs settle. Nothing
+else animates on its own. Cart drawer slides; the weave marks hover states.
+`prefers-reduced-motion` disables the reveal.
+
+**Copy:** plain, warm, local, honest about the manual confirmation. Assamese
+script appears only where it carries meaning: the wordmark, and the step
+numerals ১ / ২ / ৩ in the genuine ordering sequence.
 
 ## Technical approach
 

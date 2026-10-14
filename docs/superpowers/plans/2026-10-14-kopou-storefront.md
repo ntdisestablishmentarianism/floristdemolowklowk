@@ -22,7 +22,7 @@
 - Catalogue: 14 products; each has exactly one occasion and one category (`Flowers` | `Plants`). No price-on-request items.
 - Occasions: Birthday, Anniversary, Love & Romance, Congratulations, Thank You, Get Well, Sympathy, Festive (Bihu).
 - Images are **hotlinked** free-stock URLs (Unsplash/Pexels) stored in `data.js`. Nothing self-hosted.
-- Palette: ivory `#F7F3EC`, warm paper `#EFE9DF`, ink `#302C29`, taupe `#6B5F52`, dusty rose `#C79A93`, muted plum `#6D4B5E`. Fonts: Fraunces (display), Instrument Sans (body).
+- Palette ("Gamusa"): cotton `#F5EFE2`, cotton deep `#EBE2D0`, indigo `#152839`, gamusa red `#C2262C`, gamusa red deep `#9E1C22`, marigold `#E9A22B`, leaf `#3F5C43`. Fonts: Eczar (display, wordmark, prices), Hind Siliguri (body/UI, also renders the Assamese wordmark). A woven thread rule (`repeating-linear-gradient`) is the only structural separator; no card shadows.
 - `localStorage` keys: `kopou.cart.v1`, `kopou.coupon.v1`.
 - Order references look like `KOP-YYMMDD-XXXX`.
 
