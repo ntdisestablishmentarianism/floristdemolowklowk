@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the shop — Kopou, Dibrugarh</title>
+    <meta
+      name="description"
+      content="Kopou is a small family florist on the Chowkidinghee road in Dibrugarh. Flowers bought fresh each morning, tied by hand, and every order confirmed personally."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/css/tokens.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+  <body>
+    <main id="main" class="container">
+      <header class="page-head">
+        <h1>The shop</h1>
+        <p class="lede">
+          Kopou is a small family florist on the Chowkidinghee road. Two counters, one cool room,
+          and a bench by the window where everything gets tied.
+        </p>
+      </header>
+
+      <div class="prose">
+        <p>
+          The name is the kopou phool — the foxtail orchid you tuck into your hair at Bihu. It is
+          the first flower we learned to handle, and it still sets the standard for the rest:
+          nothing forced, nothing too perfect, just what is good that week.
+        </p>
+        <p>
+          We start early. The flowers come in before the heat does, mostly from growers up the
+          valley, and whatever will not last the day does not make it to the shelf. Everything
+          else is tied to order — we would rather build a bouquet around what you actually need
+          than hand you something that has been sitting since Tuesday.
+        </p>
+        <p>
+          There is no online payment here, and no warehouse behind the website. When you send an
+          order through this site, it reaches us the same way a phone call would: we read it,
+          check the flowers, and message you back on WhatsApp to agree the address and the time.
+          Then you pay the delivery person, in cash or by UPI.
+        </p>
+      </div>
+
+      <div class="grid grid--3 about-gallery">
+        <figure class="about-figure">
+          <img
+            src="https://images.unsplash.com/photo-1589244159943-460088ed5c92?auto=format&fit=crop&w=1000&q=70"
+            alt="The Kopou counter, with buckets of flowers laid out for the day"
+            loading="lazy"
+            width="1000"
+            height="750"
+          />
+          <figcaption>The counter, first thing in the morning.</figcaption>
+        </figure>
+        <figure class="about-figure">
+          <img
+            src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&w=1000&q=70"
+            alt="Hands tying a bouquet in kraft paper at the workroom bench"
+            loading="lazy"
+            width="1000"
+            height="750"
+          />
+          <figcaption>Every bouquet is tied by hand, to order.</figcaption>
+        </figure>
+        <figure class="about-figure">
+          <img
+            src="https://images.unsplash.com/photo-1694508438010-45667fc37b6e?auto=format&fit=crop&w=1000&q=70"
+            alt="Greenery and foliage stacked in the cool workroom"
+            loading="lazy"
+            width="1000"
+            height="750"
+          />
+          <figcaption>Greens and foliage, kept cool out the back.</figcaption>
+        </figure>
+      </div>
+
+      <div class="delivery-note about-note">
+        <span class="delivery-note__mark" lang="as" aria-hidden="true">✦</span>
+        <p>
+          Every order is confirmed personally, by phone or on WhatsApp, before it leaves the
+          shop. If you need it today, order before 4:00 PM and message us — we will tell you
+          honestly whether we can make it.
+        </p>
+      </div>
+
+      <p class="about-cta">
+        <a class="btn btn--primary" href="/shop.html">Browse the flowers</a>
+        <a class="btn btn--ghost" href="/order.html">Send an order</a>
+      </p>
+    </main>
+
+    <script type="module">
+      import { mountLayout } from '/assets/js/components.js'
+      import { config } from '/assets/js/site.config.js'
+      mountLayout(config, { activePath: '/about.html' })
+    </script>
+  </body>
+</html>

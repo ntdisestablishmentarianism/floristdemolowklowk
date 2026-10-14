@@ -323,6 +323,48 @@
   margin-bottom: var(--space-5);
 }
 
+/* ---------- About ---------- */
+
+.prose {
+  max-width: var(--measure);
+  margin-bottom: var(--space-7);
+}
+
+.prose p {
+  color: #24384a;
+}
+
+.about-gallery {
+  margin-bottom: var(--space-6);
+}
+
+.about-figure {
+  margin: 0;
+}
+
+.about-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.about-figure figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--indigo-soft);
+}
+
+.about-note {
+  margin-bottom: var(--space-6);
+}
+
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 60rem) {
