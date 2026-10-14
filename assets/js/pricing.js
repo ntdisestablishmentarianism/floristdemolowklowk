@@ -4,17 +4,28 @@
  * so a coupon can never push an order out of free delivery.
  */
 import { applyCoupon } from './coupons.js'
+import { productById } from './data.js'
 
 export const DELIVERY_FEE = 49
 export const FREE_DELIVERY_MIN = 499
 
 /**
- * @param {{ items?: {price:number, qty:number}[], couponCode?: string }} input
+ * A line may arrive priced ({price, qty}) or as the cart holds it ({id, qty}).
+ * Resolving the id here means a caller can never accidentally feed the engine
+ * id-only lines and get ₹NaN — the shape mismatch that produced it is gone.
+ */
+function priceOf(item) {
+  if (typeof item.price === 'number') return item.price
+  return productById(item.id)?.price ?? 0
+}
+
+/**
+ * @param {{ items?: {price?:number, id?:string, qty:number}[], couponCode?: string }} input
  * @returns {{subtotal:number, discount:number, deliveryFee:number, total:number,
  *            freeDeliveryApplied:boolean, couponCode:string, couponError:string}}
  */
 export function computeTotals({ items = [], couponCode = '' } = {}) {
-  const subtotal = items.reduce((sum, it) => sum + it.price * it.qty, 0)
+  const subtotal = items.reduce((sum, it) => sum + priceOf(it) * it.qty, 0)
   const freeDeliveryApplied = subtotal >= FREE_DELIVERY_MIN
 
   let discount = 0

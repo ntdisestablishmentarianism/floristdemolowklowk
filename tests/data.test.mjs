@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import {
   OCCASIONS,
+  HOME_OCCASIONS,
   CATEGORIES,
   PRODUCTS,
   productById,
@@ -46,4 +47,10 @@ test('productById finds a known id and returns undefined otherwise', () => {
 
 test('categories are exactly Flowers and Plants', () => {
   assert.deepEqual(CATEGORIES, ['Flowers', 'Plants'])
+})
+
+test('the home strip is the curated seven, a subset of all occasions', () => {
+  assert.equal(HOME_OCCASIONS.length, 7)
+  assert.equal(HOME_OCCASIONS.includes('Love & Romance'), false)
+  for (const o of HOME_OCCASIONS) assert.ok(OCCASIONS.includes(o), `${o} is not a real occasion`)
 })

@@ -74,14 +74,6 @@ export function createCart(storage = defaultStorage()) {
     return items().reduce((sum, i) => sum + (productById(i.id)?.price ?? 0) * i.qty, 0)
   }
 
-  /**
-   * Lines in the shape the totals engine wants ({price, qty}). Kept here so the
-   * cart and pricing can never be wired together with the wrong shape.
-   */
-  function pricedItems() {
-    return items().map((i) => ({ price: productById(i.id)?.price ?? 0, qty: i.qty }))
-  }
-
   function detailed() {
     return items()
       .map((i) => ({ product: productById(i.id), qty: i.qty }))
@@ -122,5 +114,5 @@ export function createCart(storage = defaultStorage()) {
     return () => subscribers.delete(fn)
   }
 
-  return { items, pricedItems, detailed, add, setQty, remove, clear, count, subtotal, subscribe }
+  return { items, detailed, add, setQty, remove, clear, count, subtotal, subscribe }
 }

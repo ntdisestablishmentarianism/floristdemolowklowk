@@ -81,6 +81,19 @@ test('buildOrderPayload shows delivery as Free when there is no fee', () => {
   assert.equal(p.delivery, 'Free')
 })
 
+test('buildOrderPayload reports the coupon code that was actually applied', () => {
+  const withCoupon = buildOrderPayload({
+    reference: 'r',
+    lines,
+    customer: validForm,
+    totals: { ...totals, couponCode: 'BIHU15' },
+  })
+  assert.equal(withCoupon.coupon, 'BIHU15')
+
+  const without = buildOrderPayload({ reference: 'r', lines, customer: validForm, totals })
+  assert.equal(without.coupon, '')
+})
+
 test('buildOrderPayload preserves an emoji and quotes in the card message', () => {
   const message = 'Happy birthday! 🎉 "with love"'
   const p = buildOrderPayload({

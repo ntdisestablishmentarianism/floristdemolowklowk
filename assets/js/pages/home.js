@@ -1,6 +1,6 @@
 import { mountLayout } from '../components.js'
 import { config } from '../site.config.js'
-import { OCCASIONS, PRODUCTS, featuredProducts } from '../data.js'
+import { HOME_OCCASIONS, PRODUCTS, featuredProducts } from '../data.js'
 import { productCardHTML, escapeHtml } from '../card.js'
 
 /** Pure renderers (tested in Node); the side effects live in `bootstrap`. */
@@ -25,7 +25,7 @@ export function bootstrap() {
   if (featured) featured.innerHTML = featuredHTML(featuredProducts())
 
   const occasions = document.querySelector('[data-occasions]')
-  if (occasions) occasions.innerHTML = occasionsHTML(OCCASIONS)
+  if (occasions) occasions.innerHTML = occasionsHTML(HOME_OCCASIONS)
 
   document.querySelectorAll('[data-product-count]').forEach((el) => {
     el.textContent = String(PRODUCTS.length)

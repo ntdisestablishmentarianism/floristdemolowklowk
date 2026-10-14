@@ -12,6 +12,10 @@ import { escapeHtml } from '../card.js'
 
 export const COUPON_KEY = 'kopou.coupon.v1'
 
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
+}
+
 /** Rows for the order summary. Pure, so the money maths is tested in Node. */
 export function summaryRows(totals) {
   return [
@@ -67,7 +71,7 @@ export function bootstrap() {
   let couponCode = readCoupon()
   couponInput.value = couponCode
 
-  const totalsNow = () => computeTotals({ items: cart.pricedItems(), couponCode })
+  const totalsNow = () => computeTotals({ items: cart.items(), couponCode })
 
   function render() {
     const lines = cart.detailed()
@@ -103,6 +107,10 @@ export function bootstrap() {
     const empty = lines.length === 0
     emptyEl.hidden = !empty
     submitBtn.disabled = empty
+
+    // If an order was just placed and the customer adds something new, bring the
+    // checkout back rather than stranding them on the confirmation screen.
+    if (!empty && !doneEl.hidden) hideDone()
   }
 
   cart.subscribe(render)
@@ -119,6 +127,10 @@ export function bootstrap() {
     formError.textContent = ''
     form.querySelectorAll('.field--invalid').forEach((el) => el.classList.remove('field--invalid'))
     form.querySelectorAll('[data-error-for]').forEach((el) => (el.textContent = ''))
+    form.querySelectorAll('[aria-invalid="true"]').forEach((el) => {
+      el.removeAttribute('aria-invalid')
+      el.removeAttribute('aria-describedby')
+    })
   }
 
   function showFieldErrors(errors) {
@@ -127,7 +139,14 @@ export function bootstrap() {
       const wrap = input?.closest('.field')
       if (wrap) wrap.classList.add('field--invalid')
       const slot = form.querySelector(`[data-error-for="${name}"]`)
-      if (slot) slot.textContent = message
+      if (slot) {
+        slot.textContent = message
+        if (!slot.id) slot.id = `error-${name}`
+        if (input) {
+          input.setAttribute('aria-invalid', 'true')
+          input.setAttribute('aria-describedby', slot.id)
+        }
+      }
     }
     form.querySelector('.field--invalid input, .field--invalid select')?.focus()
   }
@@ -139,11 +158,26 @@ export function bootstrap() {
     const values = Object.fromEntries(new FormData(form).entries())
     delete values.coupon
 
+    hideDone()
+
     const lines = cart.detailed()
     if (!lines.length) {
       formError.textContent = 'Your basket is empty — add a bouquet first.'
       return
     }
+
+    // Honour a coupon the customer typed but did not press Apply for, and refuse
+    // to send rather than quietly charging full price for a code they believe is on.
+    couponCode = couponInput.value.trim()
+    const totals = totalsNow()
+    if (totals.couponError) {
+      couponMsg.textContent = totals.couponError
+      couponMsg.classList.add('field__error')
+      couponInput.focus()
+      formError.textContent = 'That coupon code is not valid — fix it or clear it to continue.'
+      return
+    }
+    writeCoupon(totals.couponCode || '')
 
     const { ok, errors } = validateOrderForm(values)
     if (!ok) {
@@ -157,7 +191,7 @@ export function bootstrap() {
       reference,
       lines: lines.map((l) => ({ name: l.product.name, qty: l.qty, lineTotal: l.lineTotal })),
       customer: values,
-      totals: totalsNow(),
+      totals,
     })
 
     submitBtn.disabled = true
@@ -173,13 +207,21 @@ export function bootstrap() {
       const wa = doneEl.querySelector('[data-done-wa]')
       wa.href = whatsAppLink(config, reference)
       doneEl.hidden = false
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' })
     } else {
       formError.textContent = result.error
       submitBtn.disabled = false
       submitBtn.textContent = 'Send the order'
     }
   })
+
+  function hideDone() {
+    if (doneEl.hidden) return
+    doneEl.hidden = true
+    if (checkoutEl) checkoutEl.hidden = false
+    submitBtn.disabled = false
+    submitBtn.textContent = 'Send the order'
+  }
 
   const dateInput = form.querySelector('[name="date"]')
   if (dateInput) dateInput.min = new Date().toISOString().slice(0, 10)

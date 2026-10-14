@@ -146,13 +146,32 @@ export function mountLayout(config, { activePath = '/' } = {}) {
   let toastTimer
 
   function renderDrawer() {
+    // Rebuilding the drawer's HTML destroys whatever control had focus, so a
+    // keyboard user would lose their place on every quantity change. Remember
+    // which control was active and put focus back on its equivalent.
+    const active = document.activeElement
+    let restore = null
+    if (active && host.contains(active)) {
+      const attr = ['data-qty-up', 'data-qty-down', 'data-remove', 'data-cart-close'].find((a) =>
+        active.hasAttribute(a),
+      )
+      if (attr) restore = { attr, id: active.closest('[data-id]')?.dataset.id ?? null }
+    }
+
     const lines = cart.detailed()
-    const totals = computeTotals({ items: cart.pricedItems() })
+    const totals = computeTotals({ items: cart.items() })
     host.innerHTML = cartDrawerHTML(lines, totals)
     const badge = document.querySelector('[data-cart-count]')
     if (badge) badge.textContent = String(cart.count())
     const aside = host.querySelector('[data-cart-drawer]')
     if (aside && isOpen) aside.hidden = false
+
+    if (restore) {
+      const scope = restore.id ? host.querySelector(`[data-id="${restore.id}"]`) : host
+      const next = scope?.querySelector(`[${restore.attr}]`)
+      if (next) next.focus()
+      else host.querySelector('[data-cart-close]')?.focus()
+    }
   }
 
   function openDrawer() {
@@ -208,7 +227,26 @@ export function mountLayout(config, { activePath = '/' } = {}) {
   })
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && isOpen) closeDrawer()
+    if (!isOpen) return
+    if (event.key === 'Escape') return closeDrawer()
+    if (event.key !== 'Tab') return
+
+    // Keep Tab focus inside the open dialog.
+    const aside = host.querySelector('[data-cart-drawer]')
+    if (!aside) return
+    const focusables = [...aside.querySelectorAll('button, a[href], input, select, textarea')].filter(
+      (el) => !el.hasAttribute('disabled'),
+    )
+    if (!focusables.length) return
+    const first = focusables[0]
+    const last = focusables[focusables.length - 1]
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
   })
 
   return { cart, openDrawer, closeDrawer, toast, refreshDrawer: renderDrawer }

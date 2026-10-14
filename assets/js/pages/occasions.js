@@ -55,14 +55,23 @@ export function byOccasion(products, occasion) {
   return products.filter((p) => p.occasion === occasion)
 }
 
+/** A safe DOM id fragment for an occasion name ("Festive (Bihu)" → "festive-bihu"). */
+export function occasionId(occasion) {
+  return `occ-${String(occasion)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')}`
+}
+
 /** Render one occasion section, with a link into the filtered shop. */
 export function occasionSectionHTML(occasion, products) {
   const copy = COPY[occasion] ?? { title: occasion, body: '' }
   const cards = products.map(productCardHTML).join('\n')
+  const id = occasionId(occasion)
   return `
-  <section class="occasion" aria-labelledby="occ-${escapeHtml(occasion)}">
+  <section class="occasion" aria-labelledby="${id}">
     <div class="section__head">
-      <h2 id="occ-${escapeHtml(occasion)}">${escapeHtml(copy.title)}</h2>
+      <h2 id="${id}">${escapeHtml(copy.title)}</h2>
       <a class="section__more" href="/shop.html?occasion=${encodeURIComponent(occasion)}">
         Shop ${escapeHtml(copy.title)}
       </a>

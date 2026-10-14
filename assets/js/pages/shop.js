@@ -41,7 +41,11 @@ export function filterAndSort(
 
 /** Read the current filter state from a URLSearchParams-like object. */
 export function readFilters(params) {
-  const num = (v) => (v === null || v === '' ? undefined : Number(v))
+  const num = (v) => {
+    if (v === null || v === '') return undefined
+    const n = Number(v)
+    return Number.isFinite(n) ? n : undefined
+  }
   return {
     occasion: params.get('occasion') || '',
     category: params.get('category') || '',
@@ -117,6 +121,13 @@ export function bootstrap() {
   form.querySelectorAll('[data-clear]').forEach((btn) =>
     btn.addEventListener('click', () => {
       form.reset()
+      // form.reset() restores each option's defaultSelected state, which after a
+      // URL pre-filter (?occasion=…) is the pre-filtered option — so Clear must
+      // empty every control explicitly or it would appear to do nothing.
+      for (const name of ['occasion', 'category', 'minPrice', 'maxPrice', 'sort']) {
+        const el = form.querySelector(`[name="${name}"]`)
+        if (el) el.value = ''
+      }
       apply()
     }),
   )

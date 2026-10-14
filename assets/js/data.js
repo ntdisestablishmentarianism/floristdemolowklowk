@@ -2,6 +2,9 @@
  * Catalogue — the single source of truth for products and their imagery.
  * Images are hotlinked free stock (Unsplash) chosen from a search whose subject
  * matches the product; nothing is self-hosted.
+ *
+ * The few editorial images (home hero, About page) are written directly into
+ * their page HTML instead, so the hero paints without waiting on JavaScript.
  */
 
 /** Build a hotlinked stock URL at a given width. */
@@ -21,12 +24,19 @@ export const OCCASIONS = [
 
 export const CATEGORIES = ['Flowers', 'Plants']
 
-/** Hero and editorial imagery (kept here so all stock URLs live in one file). */
-export const HERO_IMAGE = img('photo-1487530811176-3780de880c2d', 1600)
-export const ABOUT_IMAGES = [
-  { src: img('photo-1589244159943-460088ed5c92', 1000), alt: 'The Kopou counter, flowers laid out for the day' },
-  { src: img('photo-1567696153798-9111f9cd3d0d', 1000), alt: 'Hands tying a bouquet in kraft paper' },
-  { src: img('photo-1694508438010-45667fc37b6e', 1000), alt: 'Foliage and greenery in the workroom' },
+/**
+ * The Home page shows a curated seven occasions (spec), not the full list —
+ * Love & Romance is left to the Shop and the Occasions page. Order is the
+ * spec's reading order.
+ */
+export const HOME_OCCASIONS = [
+  'Birthday',
+  'Anniversary',
+  'Congratulations',
+  'Thank You',
+  'Get Well',
+  'Sympathy',
+  'Festive (Bihu)',
 ]
 
 export const PRODUCTS = [

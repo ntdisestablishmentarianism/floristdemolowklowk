@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { filterAndSort } from '../assets/js/pages/shop.js'
+import { filterAndSort, readFilters } from '../assets/js/pages/shop.js'
 
 const P = [
   { id: 'a', occasion: 'Birthday', category: 'Flowers', price: 500, featured: false, added: 1 },
@@ -44,4 +44,17 @@ test('featured sorts featured first, then original order', () => {
 
 test('filters combine', () => {
   assert.deepEqual(ids(filterAndSort(P, { occasion: 'Birthday', maxPrice: 600 })), ['a'])
+})
+
+test('readFilters ignores a non-numeric price instead of producing NaN', () => {
+  const f = readFilters(new URLSearchParams('minPrice=abc&maxPrice=250'))
+  assert.equal(f.minPrice, undefined)
+  assert.equal(f.maxPrice, 250)
+})
+
+test('readFilters treats blank and missing prices as "no bound"', () => {
+  const f = readFilters(new URLSearchParams('minPrice=&sort=newest'))
+  assert.equal(f.minPrice, undefined)
+  assert.equal(f.maxPrice, undefined)
+  assert.equal(f.sort, 'newest')
 })

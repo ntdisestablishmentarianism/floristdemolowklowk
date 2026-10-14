@@ -48,3 +48,19 @@ test('free delivery is measured on the pre-discount subtotal', () => {
   assert.equal(FREE_DELIVERY_MIN, 499)
   assert.equal(t.deliveryFee, DELIVERY_FEE)
 })
+
+test('accepts the cart shape (id + qty) by resolving prices from the catalogue', () => {
+  const t = computeTotals({
+    items: [
+      { id: 'xewali-dawn', qty: 2 },
+      { id: 'peace-lily', qty: 1 },
+    ],
+  })
+  assert.equal(t.subtotal, 649 * 2 + 349)
+  assert.equal(Number.isNaN(t.total), false)
+})
+
+test('an unknown id contributes nothing rather than NaN', () => {
+  const t = computeTotals({ items: [{ id: 'nope', qty: 3 }] })
+  assert.equal(t.subtotal, 0)
+})

@@ -73,6 +73,7 @@ export function buildOrderPayload({ reference, lines = [], customer = {}, totals
     items,
     subtotal: formatINR(totals.subtotal ?? 0),
     discount: formatINR(totals.discount ?? 0),
+    coupon: totals.couponCode ?? '',
     delivery,
     total: formatINR(totals.total ?? 0),
   }
