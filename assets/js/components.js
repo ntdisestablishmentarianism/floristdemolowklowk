@@ -60,8 +60,8 @@ export function whatsAppButtonHTML(config) {
 </a>`
 }
 
-export function footerHTML(config) {  return `
-  <div class="weave-rule" aria-hidden="true"></div>
+export function footerHTML(config) {
+  return `
   <footer class="site-footer" id="contact">
     <div class="container site-footer__inner">
       <div class="site-footer__brand">

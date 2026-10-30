@@ -62,8 +62,7 @@ Two files hold almost everything you would change:
 - `assets/js/site.config.js` — shop name, city, phone, WhatsApp number, address, hours,
   and the Formspree endpoint.
 - `assets/css/tokens.css` — the whole palette (`--cotton`, `--indigo`, `--gamusa`,
-  `--marigold`, `--leaf`), the type, and the woven-thread rule that marks section
-  boundaries.
+  `--leaf`), the type, and the single woven-thread rule at the header seam.
 
 The catalogue (products, prices, occasions, image URLs) lives in `assets/js/data.js`.
 All imagery is **hotlinked free stock** (Unsplash); nothing is self-hosted.

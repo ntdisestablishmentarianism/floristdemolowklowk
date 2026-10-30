@@ -16,6 +16,7 @@
   padding-block: var(--space-3);
 }
 
+/* The shop's own name, in its own script, is the mark. */
 .wordmark {
   display: inline-flex;
   flex-direction: column;
@@ -27,13 +28,13 @@
 
 .wordmark__as {
   font-family: var(--font-assamese);
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
 .wordmark__lat {
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--indigo-soft);
   letter-spacing: 0.02em;
@@ -41,7 +42,7 @@
 
 .nav {
   display: flex;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: center;
 }
 
@@ -50,29 +51,27 @@
   text-decoration: none;
   color: var(--indigo);
   font-size: var(--step--1);
-  font-weight: 600;
-  padding-block: 0.15rem;
+  font-weight: 500;
+  padding-block: var(--space-1);
 }
 
+/* One accent tick marks the active page — not a second colour on the text. */
 .nav__link::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -0.35rem;
-  height: 4px;
-  background-image: var(--weave);
-  opacity: 0;
-  transition: opacity 0.18s ease;
+  bottom: -0.25rem;
+  height: 2px;
+  background: var(--gamusa);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.16s ease;
 }
 
 .nav__link:hover::after,
 .nav__link[aria-current='page']::after {
-  opacity: 1;
-}
-
-.nav__link[aria-current='page'] {
-  color: var(--gamusa-deep);
+  transform: scaleX(1);
 }
 
 .cart-button {
@@ -80,26 +79,23 @@
   align-items: center;
   gap: var(--space-2);
   background: transparent;
-  border: 1px solid var(--indigo);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  padding: 0.45rem 0.8rem;
+  padding: var(--space-2) var(--space-3);
   font-size: var(--step--1);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .cart-button:hover {
-  background: rgba(21, 40, 57, 0.06);
+  background: rgba(28, 36, 32, 0.05);
 }
 
+/* A quiet count, not a coloured pill. */
 .cart-button__count {
-  font-family: var(--font-display);
-  font-weight: 600;
-  min-width: 1.4rem;
+  min-width: 1rem;
   text-align: center;
-  background: var(--gamusa);
-  color: var(--cotton);
-  border-radius: 999px;
-  padding: 0.05rem 0.35rem;
+  color: var(--indigo-soft);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- Buttons ---------- */
@@ -110,9 +106,9 @@
   justify-content: center;
   gap: var(--space-2);
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--step-0);
-  padding: 0.7rem 1.3rem;
+  padding: 0.75rem 1.25rem;
   border-radius: var(--radius);
   border: 1px solid transparent;
   text-decoration: none;
@@ -121,27 +117,27 @@
 
 .btn--primary {
   background: var(--gamusa);
-  color: var(--cotton);
+  color: var(--paper);
 }
 
 .btn--primary:hover {
   background: var(--gamusa-deep);
-  color: var(--cotton);
+  color: var(--paper);
 }
 
 .btn--ghost {
   background: transparent;
-  border-color: var(--indigo);
+  border-color: var(--line-strong);
   color: var(--indigo);
 }
 
 .btn--ghost:hover {
-  background: rgba(21, 40, 57, 0.07);
+  background: rgba(28, 36, 32, 0.05);
   color: var(--indigo);
 }
 
 .btn--small {
-  padding: 0.4rem 0.85rem;
+  padding: var(--space-2) var(--space-3);
   font-size: var(--step--1);
 }
 
@@ -169,11 +165,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card:hover .card__media img {
-  transform: scale(1.035);
 }
 
 .card__body {
@@ -187,7 +178,7 @@
 .card__name {
   font-family: var(--font-display);
   font-size: var(--step-1);
-  font-weight: 600;
+  font-weight: 500;
   margin: 0;
   line-height: 1.15;
 }
@@ -207,14 +198,29 @@
 }
 
 .card__price {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
-.card__occasion {
+/* Quiet text control: the red is saved for the primary action. */
+.card__add {
+  background: none;
+  border: 0;
+  padding: var(--space-2) 0;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
   font-size: var(--step--1);
-  color: var(--indigo-soft);
+  font-weight: 500;
+  color: var(--indigo);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.card__add:hover {
+  color: var(--gamusa-deep);
 }
 
 /* ---------- Chips ---------- */
@@ -227,17 +233,19 @@
 
 .chip {
   display: inline-block;
-  padding: 0.35rem 0.85rem;
-  border: 1px solid rgba(21, 40, 57, 0.25);
-  border-radius: 999px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
   font-size: var(--step--1);
+  font-weight: 500;
   text-decoration: none;
   color: var(--indigo);
 }
 
 .chip:hover {
-  border-color: var(--gamusa);
-  color: var(--gamusa-deep);
+  border-color: var(--indigo);
+  background: rgba(28, 36, 32, 0.05);
+  color: var(--indigo);
 }
 
 /* ---------- Forms ---------- */
@@ -245,13 +253,13 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
 
 .field > label,
 .field > legend {
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--step--1);
 }
 
@@ -259,8 +267,8 @@
 .field select,
 .field textarea {
   font: inherit;
-  padding: 0.6rem 0.7rem;
-  border: 1px solid rgba(21, 40, 57, 0.28);
+  padding: var(--space-3);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background: var(--cloth);
   color: var(--ink);
@@ -282,7 +290,6 @@
 .field--invalid select,
 .field--invalid textarea {
   border-color: var(--gamusa);
-  border-width: 2px;
 }
 
 fieldset.field {
@@ -300,12 +307,12 @@ fieldset.field {
 .radio {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   font-size: var(--step-0);
 }
 
 .field-hint {
-  color: var(--indigo-soft);
+  color: var(--indigo-muted);
   font-size: var(--step--1);
 }
 
@@ -314,7 +321,7 @@ fieldset.field {
 .drawer-scrim {
   position: fixed;
   inset: 0;
-  background: rgba(21, 40, 57, 0.42);
+  background: rgba(28, 36, 32, 0.45);
   z-index: 50;
 }
 
@@ -340,7 +347,7 @@ body.drawer-open {
   box-shadow: var(--shadow-soft);
   transform: translateX(105%);
   visibility: hidden;
-  transition: transform 0.32s ease, visibility 0.32s;
+  transition: transform 0.28s ease, visibility 0.28s;
 }
 
 .drawer[hidden] {
@@ -368,7 +375,7 @@ body.drawer-open {
 .drawer__close {
   background: transparent;
   border: 0;
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   line-height: 1;
   padding: 0 var(--space-2);
 }
@@ -400,7 +407,7 @@ body.drawer-open {
 .drawer__line-name {
   margin: 0 0 var(--space-1);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .drawer__line-body {
@@ -414,9 +421,9 @@ body.drawer-open {
 }
 
 .drawer__qty button {
-  width: 1.7rem;
-  height: 1.7rem;
-  border: 1px solid rgba(21, 40, 57, 0.3);
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background: transparent;
   line-height: 1;
@@ -428,8 +435,8 @@ body.drawer-open {
 
 .drawer__line-total {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
 .drawer__remove {
@@ -457,7 +464,8 @@ body.drawer-open {
   justify-content: space-between;
   gap: var(--space-4);
   font-size: var(--step-0);
-  padding-block: 0.15rem;
+  font-variant-numeric: tabular-nums;
+  padding-block: var(--space-1);
 }
 
 .drawer__row--discount {
@@ -467,10 +475,10 @@ body.drawer-open {
 .drawer__row--total {
   font-family: var(--font-display);
   font-size: var(--step-2);
-  font-weight: 600;
+  font-weight: 500;
   padding-top: var(--space-2);
   margin-top: var(--space-2);
-  border-top: 1px solid rgba(21, 40, 57, 0.18);
+  border-top: 1px solid var(--line);
 }
 
 .drawer__checkout {
@@ -480,7 +488,7 @@ body.drawer-open {
 .drawer__note {
   margin: var(--space-3) 0 0;
   font-size: var(--step--1);
-  color: var(--indigo-soft);
+  color: var(--indigo-muted);
   text-align: center;
 }
 
@@ -493,12 +501,12 @@ body.drawer-open {
   transform: translate(-50%, 1.5rem);
   z-index: 70;
   background: var(--indigo);
-  color: var(--cotton);
-  padding: 0.6rem 1.1rem;
+  color: var(--paper);
+  padding: var(--space-3) var(--space-5);
   border-radius: var(--radius);
   font-size: var(--step--1);
   opacity: 0;
-  transition: opacity 0.22s ease, transform 0.22s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .toast--show {
@@ -509,7 +517,7 @@ body.drawer-open {
 /* ---------- Floating WhatsApp button ---------- */
 
 /* Sits below the drawer scrim (z 50) so it cannot be tapped while the basket
-   is open. Sharp 3px corners to match the buttons, not a generic round FAB. */
+   is open. Quiet ink surface; the glyph carries the meaning. */
 .whatsapp-fab {
   position: fixed;
   right: var(--space-5);
@@ -518,34 +526,33 @@ body.drawer-open {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 0.62rem 1rem 0.62rem 0.9rem;
-  background: var(--leaf);
-  color: var(--cotton);
+  padding: var(--space-3) var(--space-4);
+  background: var(--indigo);
+  color: var(--paper);
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--step--1);
   text-decoration: none;
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
-  transition: background-color 0.16s ease, transform 0.16s ease;
+  transition: background-color 0.16s ease;
 }
 
 .whatsapp-fab:hover {
-  background: var(--leaf-deep);
-  color: var(--cotton);
-  transform: translateY(-2px);
+  background: var(--gamusa-deep);
+  color: var(--paper);
 }
 
 .whatsapp-fab__glyph {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.25rem;
+  height: 1.25rem;
   flex: none;
 }
 
 /* On phones the label drops and it becomes a square icon button. */
 @media (max-width: 34rem) {
   .whatsapp-fab {
-    padding: 0.7rem;
+    padding: var(--space-3);
   }
 
   .whatsapp-fab__label {
@@ -556,9 +563,9 @@ body.drawer-open {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  margin-top: var(--space-9);
+  margin-top: var(--space-8);
   background: var(--indigo);
-  color: var(--cotton);
+  color: var(--paper);
   padding-block: var(--space-7) var(--space-5);
 }
 
@@ -569,11 +576,16 @@ body.drawer-open {
 }
 
 .site-footer a {
-  color: var(--cotton);
+  color: var(--paper);
 }
 
 .site-footer a:hover {
-  color: var(--marigold);
+  color: var(--paper);
+  text-decoration-thickness: 2px;
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--paper);
 }
 
 .footer-wordmark {
@@ -586,13 +598,14 @@ body.drawer-open {
 
 .site-footer__brand p {
   max-width: 34ch;
-  color: rgba(245, 239, 226, 0.85);
+  color: rgba(242, 243, 238, 0.85);
 }
 
 .site-footer__head {
   font-size: var(--step-1);
+  font-weight: 500;
   margin: 0 0 var(--space-3);
-  color: var(--cotton);
+  color: var(--paper);
 }
 
 .site-footer__col p {
@@ -602,13 +615,13 @@ body.drawer-open {
 .site-footer__fine {
   margin-top: var(--space-6);
   padding-top: var(--space-4);
-  border-top: 1px solid rgba(245, 239, 226, 0.2);
+  border-top: 1px solid rgba(242, 243, 238, 0.2);
 }
 
 .site-footer__fine p {
   margin: 0;
   font-size: var(--step--1);
-  color: rgba(245, 239, 226, 0.75);
+  color: rgba(242, 243, 238, 0.7);
   max-width: var(--measure);
 }
 

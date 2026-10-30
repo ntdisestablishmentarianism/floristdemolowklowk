@@ -15,14 +15,14 @@
   max-width: 52ch;
 }
 
-/* ---------- Hero: the one bold move — a woven gamusa band ---------- */
+/* ---------- Hero: the photograph is the one bright thing ---------- */
 
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: min(80vh, 46rem);
+  min-height: min(78vh, 44rem);
   background: var(--indigo);
   overflow: hidden;
 }
@@ -35,43 +35,21 @@
   object-fit: cover;
 }
 
+/* Neutral scrim only where the words need to sit. */
 .hero__scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(21, 40, 57, 0.4) 0%,
-    rgba(21, 40, 57, 0.08) 38%,
-    rgba(21, 40, 57, 0.28) 100%
+    rgba(28, 36, 32, 0.18) 0%,
+    rgba(28, 36, 32, 0.06) 38%,
+    rgba(28, 36, 32, 0.78) 100%
   );
 }
 
 .hero__band {
   position: relative;
-  background-color: var(--gamusa);
-  background-image: var(--weave-vertical);
-  color: var(--cotton);
-  animation: weave-in 0.72s cubic-bezier(0.22, 0.7, 0.2, 1) both;
-}
-
-@keyframes weave-in {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+  padding-block: var(--space-8) var(--space-7);
 }
 
 .hero__band-inner {
@@ -80,27 +58,38 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-5);
-  padding-block: var(--space-6);
+  animation: rise 0.32s ease both;
 }
 
 .hero__title {
-  font-size: clamp(1.9rem, 4.6vw, 3.3rem);
-  color: var(--cotton);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 500;
+  color: var(--paper);
   margin: 0;
-  max-width: 22ch;
-  animation: rise 0.55s 0.28s ease both;
+  max-width: 20ch;
+  text-wrap: balance;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  animation: rise 0.55s 0.44s ease both;
 }
 
-/* Buttons reversed on the red band. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Buttons reversed on the photograph. */
 .hero .btn--primary {
-  background: var(--cotton);
+  background: var(--paper);
   color: var(--indigo);
 }
 
@@ -110,13 +99,17 @@
 }
 
 .hero .btn--ghost {
-  border-color: var(--cotton);
-  color: var(--cotton);
+  border-color: rgba(242, 243, 238, 0.55);
+  color: var(--paper);
 }
 
 .hero .btn--ghost:hover {
-  background: rgba(245, 239, 226, 0.16);
-  color: var(--cotton);
+  background: rgba(242, 243, 238, 0.12);
+  color: var(--paper);
+}
+
+.hero :focus-visible {
+  outline-color: var(--paper);
 }
 
 /* ---------- Sections ---------- */
@@ -148,7 +141,7 @@
 
 .section__more {
   font-size: var(--step--1);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ---------- Grids ---------- */
@@ -178,26 +171,15 @@
 }
 
 .step {
-  position: relative;
-  padding-top: var(--space-4);
-}
-
-.step::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background-image: var(--weave);
+  padding-top: var(--space-2);
 }
 
 .step__num {
   display: block;
   font-family: var(--font-assamese);
-  font-size: var(--step-4);
+  font-size: var(--step-2);
   line-height: 1;
-  color: var(--gamusa);
+  color: var(--indigo-muted);
 }
 
 .step h3 {
@@ -239,24 +221,14 @@
 /* ---------- Delivery note ---------- */
 
 .delivery-note {
-  display: flex;
-  gap: var(--space-4);
-  align-items: flex-start;
-  padding: var(--space-5);
-  border: 1px solid rgba(21, 40, 57, 0.18);
-  border-radius: var(--radius);
-  background: var(--cloth);
-}
-
-.delivery-note__mark {
-  font-family: var(--font-assamese);
-  font-size: var(--step-3);
-  line-height: 1;
-  color: var(--marigold);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .delivery-note p {
   margin: 0;
+  max-width: var(--measure);
 }
 
 /* ---------- Shop: filters ---------- */
@@ -278,7 +250,7 @@
 
 .filters__count {
   margin: var(--space-4) 0 0;
-  color: var(--indigo-soft);
+  color: var(--indigo-muted);
   font-size: var(--step--1);
 }
 
@@ -312,9 +284,9 @@
 .occasion + .occasion::before {
   content: '';
   display: block;
-  height: 4px;
+  height: 1px;
   margin-bottom: var(--space-6);
-  background-image: var(--weave);
+  background: var(--line);
 }
 
 .occasion__copy {
@@ -331,7 +303,7 @@
 }
 
 .prose p {
-  color: #24384a;
+  color: var(--indigo);
 }
 
 .about-gallery {
@@ -376,6 +348,7 @@
 
 .checkout__heading {
   font-size: var(--step-2);
+  font-weight: 500;
   margin-bottom: var(--space-4);
 }
 
@@ -393,7 +366,7 @@
   position: sticky;
   top: 6rem;
   background: var(--cloth);
-  border: 1px solid rgba(21, 40, 57, 0.16);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: var(--space-5);
 }
@@ -404,7 +377,7 @@
   gap: var(--space-3);
   padding-bottom: var(--space-4);
   margin-bottom: var(--space-3);
-  border-bottom: 1px solid rgba(21, 40, 57, 0.16);
+  border-bottom: 1px solid var(--line);
 }
 
 .sumline {
@@ -415,13 +388,11 @@
 }
 
 .sumline__name {
-  font-family: var(--font-display);
   font-weight: 500;
 }
 
 .sumline__qty {
   color: var(--indigo-soft);
-  font-family: var(--font-body);
   font-size: var(--step--1);
 }
 
@@ -432,22 +403,23 @@
 .checkout__rows {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--space-1);
 }
 
 .checkout__row {
   display: flex;
   justify-content: space-between;
   gap: var(--space-4);
+  font-variant-numeric: tabular-nums;
 }
 
 .checkout__row--total {
   font-family: var(--font-display);
   font-size: var(--step-2);
-  font-weight: 600;
+  font-weight: 500;
   margin-top: var(--space-3);
   padding-top: var(--space-3);
-  border-top: 1px solid rgba(21, 40, 57, 0.2);
+  border-top: 1px solid var(--line);
 }
 
 .checkout__empty {
@@ -466,7 +438,7 @@
 
 .checkout__form-error {
   color: var(--gamusa-deep);
-  font-weight: 600;
+  font-weight: 500;
   min-height: 1.2em;
   margin: 0 0 var(--space-3);
 }

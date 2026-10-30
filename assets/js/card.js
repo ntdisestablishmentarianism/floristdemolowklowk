@@ -23,10 +23,9 @@ export function productCardHTML(product) {
     <div class="card__body">
       <h3 class="card__name">${name}</h3>
       <p class="card__comp">${composition}</p>
-      <p class="card__occasion">${escapeHtml(product.occasion)}</p>
       <div class="card__foot">
         <span class="card__price">${formatINR(product.price)}</span>
-        <button class="btn btn--primary btn--small" type="button" data-add="${escapeHtml(product.id)}" data-name="${name}">
+        <button class="card__add" type="button" data-add="${escapeHtml(product.id)}" data-name="${name}">
           Add to basket
         </button>
       </div>

@@ -1,4 +1,4 @@
-/* Kopou — base: reset, page cloth texture, typography, layout containers. */
+/* Kopou — base: reset, paper ground, typography, layout containers. */
 
 *,
 *::before,
@@ -19,10 +19,6 @@ body {
   line-height: var(--leading-body);
   color: var(--ink);
   background-color: var(--cotton);
-  /* A faint woven-cloth texture: cotton, not a flat fill. */
-  background-image:
-    repeating-linear-gradient(0deg, rgba(21, 40, 57, 0.028) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(21, 40, 57, 0.022) 0 1px, transparent 1px 4px);
 }
 
 img {
@@ -31,13 +27,13 @@ img {
 }
 
 a {
-  color: var(--gamusa-deep);
+  color: var(--indigo);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--gamusa);
+  color: var(--gamusa-deep);
 }
 
 h1,
@@ -45,7 +41,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   line-height: var(--leading-tight);
   margin: 0 0 var(--space-3);
   letter-spacing: -0.01em;
@@ -116,9 +112,9 @@ button {
   top: var(--space-4);
 }
 
-/* The woven thread rule — used only to mark a boundary. */
+/* The woven thread — the one signature. Mark a boundary once. */
 .weave-rule {
-  height: 8px;
+  height: 6px;
   background-image: var(--weave);
   background-position: center;
 }

@@ -1,40 +1,36 @@
 /* ------------------------------------------------------------------
    Kopou — design tokens
-   Direction: "Gamusa" — the red-and-white Assamese handwoven cloth,
-   and the marigold of every Bihu. Cotton ground, indigo ink, one sharp
-   red accent. Eczar for display, Hind Siliguri for body.
+   Direction: "Dawn market" — the workroom bench and the flower market at
+   first light. Unbleached paper with a grey-green cast, one ink, one
+   gamusa red for the primary action and the single woven thread.
+   Archivo for Latin display, Hind Siliguri for body and Assamese.
    ------------------------------------------------------------------ */
 
 :root {
-  /* Palette */
-  --cotton: #f5efe2;
-  --cotton-deep: #ebe2d0;
-  --cloth: #fbf7ee; /* lifted surface, e.g. cards on cotton */
-  --indigo: #152839;
-  --indigo-soft: #405568;
-  --gamusa: #c2262c;
-  --gamusa-deep: #9e1c22;
-  --marigold: #e9a22b;
-  --leaf: #3f5c43;
-  --leaf-deep: #2f4a36;
+  /* Palette — one neutral ramp, one accent. */
+  --cotton: #f2f3ee; /* page ground: unbleached paper, cool not cream */
+  --cotton-deep: #e7e8e1; /* alternate band */
+  --cloth: #fafaf6; /* raised surface: forms, cards, drawer */
+
+  --indigo: #1c2420; /* ink: near-black with a green-blue cast */
+  --indigo-soft: #4c5651; /* secondary text */
+  --indigo-muted: #5e6862; /* muted meta (5.1:1 on paper) */
+
+  --gamusa: #a62a2e; /* the one accent */
+  --gamusa-deep: #8a2226; /* accent hover */
+  --leaf: #3f5c43; /* positive only: the discount line */
 
   --ink: var(--indigo);
   --paper: var(--cotton);
 
-  /* Woven thread rule — the one structural device. */
-  --weave: repeating-linear-gradient(
-    90deg,
-    var(--gamusa) 0 3px,
-    transparent 3px 9px
-  );
-  --weave-vertical: repeating-linear-gradient(
-    0deg,
-    rgba(194, 38, 44, 0.14) 0 2px,
-    transparent 2px 8px
-  );
+  --line: rgba(28, 36, 32, 0.14);
+  --line-strong: rgba(28, 36, 32, 0.28);
+
+  /* The one signature: a single red gamusa thread, used once per screen. */
+  --weave: repeating-linear-gradient(90deg, var(--gamusa) 0 2px, transparent 2px 8px);
 
   /* Type */
-  --font-display: 'Eczar', 'Iowan Old Style', Georgia, serif;
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Hind Siliguri', 'Segoe UI', system-ui, sans-serif;
   --font-assamese: 'Hind Siliguri', 'Noto Sans Bengali', sans-serif;
 
@@ -44,14 +40,14 @@
   --step-2: 1.5rem;
   --step-3: 1.9rem;
   --step-4: 2.4rem;
-  --step-5: clamp(2.6rem, 6.5vw, 4.6rem);
+  --step-5: clamp(2.5rem, 5.5vw, 4rem);
 
-  --leading-tight: 1.04;
+  --leading-tight: 1.05;
   --leading-body: 1.62;
 
   --measure: 66ch;
 
-  /* Space */
+  /* Space — 4px grid */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -65,8 +61,8 @@
   --radius: 3px;
   --container: 74rem;
 
-  --shadow-soft: 0 18px 40px -28px rgba(21, 40, 57, 0.5);
+  --shadow-soft: 0 18px 40px -30px rgba(28, 36, 32, 0.55);
 
-  --focus: 2px solid var(--marigold);
+  --focus: 2px solid var(--indigo);
   --focus-offset: 3px;
 }
